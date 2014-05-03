@@ -18,7 +18,7 @@ import           Control.Applicative                  ((<$>))
 import           System.Environment                   (getEnv)
 
 -- Third Party
-import           Network.Wai.Middleware.RequestLogger (logStdoutDev)
+--import           Network.Wai.Middleware.RequestLogger (logStdoutDev)
 import           Network.Wai.Middleware.Static        (addBase, noDots,
                                                        staticPolicy, (>->))
 import           Web.Scotty                           (middleware, scotty)
@@ -31,5 +31,5 @@ main = do
   port <- read <$> getEnv "PORT"
   scotty port $ do
          middleware $ staticPolicy (noDots >-> addBase "src/static/images") -- for favicon.ico
-         middleware logStdoutDev
+         --middleware logStdoutDev
          App.app
